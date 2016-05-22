@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}游戏开始{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-off-1">
+
+        <h2 class="text-center">游戏说明</h2>
+        <h4 class="text-center">如果本关你得到的答案是answer</h4>
+        <h4 class="text-center">那么将url改为/game/answer/</h4>
+
+        <hr/>
+
+        <h2 class="text-center">第一关</h2>
+        <img src="{% static "img/U29sdXRpb24gMQ/1.png" %}" class="text-center">
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

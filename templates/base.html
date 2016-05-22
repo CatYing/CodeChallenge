@@ -1,0 +1,61 @@
+{% load  staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{% static "css/vendor/bootstrap/css/bootstrap.min.css " %}"/>
+    <link rel="stylesheet" href="{% static 'css/cover.css' %}">
+    <script type="text/javascript" src="{% static "js/vendor/jquery.min.js" %}"></script>
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<style>
+
+    .navbar-static-top{
+        margin-bottom: 19px;
+    }
+    a{
+        color: #3498db !important;
+    }
+    .active>a{
+        color: #9b59b6 !important;
+    }
+</style>
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a class="navbar-brand" href="#">第八届捉虫大赛</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                {% if user %}
+                    <li><a href="#">{{ user.username }}通关数目 &nbsp; {{ user.myuser.pass_num }}</a></li>
+                    <li><a href="{% url 'logout' %}">登出</a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}">注册</a></li>
+                    <li><a href="{% url 'login' %}">登录</a></li>
+                {% endif %}
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+{% block content %}{% endblock %}
+
+<footer class="footer" role="contentinfo">
+    <hr>
+    <div class="container">
+        <p class="text-center"><strong>HIT-MSC</strong></p>
+        <p class="text-center">©All rights reserved</p>
+        <p class="text-center">Powered by&nbsp;CatYing</p>
+    </div>
+</footer>
+</body>
+</html>

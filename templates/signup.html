@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}选手注册{% endblock %}
+
+{% block content %}
+    
+    <div class="container signup">
+
+        <div class="row" style="min-height: 100%;">
+            <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                {% if state == 'success' %}
+                    <div class="well">
+                        <h2 class="text-success text-center">注册成功！</h2>
+                    </div>
+                {% elif state == 'exist' %}
+                    <div class="well">
+                        <h2 class="text-danger text-center">用户已经存在</h2>
+                    </div>
+                {% endif %}
+                <form method="POST" role="form" class="form-horizontal">
+                    {% csrf_token %}
+                    <h1 class="form-signin-heading text-center">选手注册</h1>
+
+                    <div class="form-group">
+                        <label for="id_user_name" class="col-md-3 control-label">学号：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="id_user_name" required name="username"
+                                   autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_real_name" class="col-md-3 control-label">姓名：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="id_real_name" required name="realname"
+                                   autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_passwd" class="col-md-3 control-label">密码：</label>
+                        <div class="col-md-9">
+                            <input type="password" class="form-control" required name="password" id="id_passwd">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-4">
+                            <button class="btn btn btn-primary btn-block" type="submit" id="id_submit">注册</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script>
+$(document).ready(function() {
+    var divHeight = $('.signup').height();
+    var footHeight = $('footer').height();
+    var winHeight = window.innerHeight;
+    $('.signup').css('margin-top', (winHeight - divHeight - footHeight) / 2);
+    $('.signup').css('margin-bottom', (winHeight - divHeight - footHeight) / 2);
+});
+</script>
+{% endblock %}
